@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val Celebrities = ArrayList<Celebrity.Actors>()
         setContentView(R.layout.activity_main)
+        this.setTitle("Celebrities")
         getData()
 
 
