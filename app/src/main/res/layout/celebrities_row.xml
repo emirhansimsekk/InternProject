@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -12,9 +13,6 @@
         android:layout_margin="15dp"
         app:cardCornerRadius="25dp"
         android:backgroundTint="#fff"
-
-
-
 
         >
 
@@ -36,11 +34,11 @@
 
             <TextView
                 android:id="@+id/txt_Name"
-                android:layout_width="132dp"
-                android:layout_height="27dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="24dp"
-                android:text="Bruce Willis"
+                android:text="Ad Soyad"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
