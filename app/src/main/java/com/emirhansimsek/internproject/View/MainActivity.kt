@@ -1,10 +1,15 @@
 package com.emirhansimsek.internproject.View
 
+import android.animation.Animator
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.text.format.Time
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.emirhansimsek.internproject.Controller.CelebrityAPIService
 import com.emirhansimsek.internproject.Controller.customAdapterCelebrities
 import com.emirhansimsek.internproject.Model.Celebrity
@@ -13,6 +18,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         this.setTitle("Celebrities")
         getData()
-
-
 
         }
 
@@ -65,27 +70,19 @@ class MainActivity : AppCompatActivity() {
 
         }
         )
-        println("enqueue disi ${Celebrities.size}")
-       /* val layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerView).layoutManager = layoutManager
-        val adapter = customAdapterCelebrities(Celebrities)
-        findViewById<RecyclerView>(R.id.recyclerView).adapter = adapter*/
-        val Celebrities1 = ArrayList<Celebrity.Actors>()
-        println("recyclerview")
-        /*val celebrity = Celebrity.Actors("Emirhan", "1","2","3","4")
-        Celebrities1.add(celebrity)*/
-        /*val layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerView).layoutManager = layoutManager
-        val adapter = customAdapterCelebrities(Celebrities)
-        findViewById<RecyclerView>(R.id.recyclerView).adapter = adapter*/
+
     }
 
     fun recyclerView(Celebrities: ArrayList<Celebrity.Actors>){
         val layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerView).layoutManager = layoutManager
+        var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = layoutManager
         val adapter = customAdapterCelebrities(Celebrities)
-        findViewById<RecyclerView>(R.id.recyclerView).adapter = adapter
-        println(Celebrities[0].name_surname)
+        recyclerView.adapter = adapter
+
+
+
+
     }
 
 

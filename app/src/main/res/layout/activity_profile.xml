@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:fillViewport="true">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
@@ -24,31 +24,30 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_red"
                 android:gravity="center"
-                android:text="W"
+                android:text="@string/textview"
                 android:textColor="#FFFFFF"
                 android:textSize="32sp" />
 
             <TextView
                 android:id="@+id/fullName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="120dp"
-                android:textStyle="bold"
-                android:textSize="24sp"
+                android:text="@string/textview"
                 android:textAlignment="center"
-                android:text="TextView" />
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/age"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="160dp"
+                android:text="@string/textview"
                 android:textAlignment="center"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
 
         </RelativeLayout>
@@ -66,7 +65,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginStart="25dp"
                 android:textSize="18sp"
-                android:text="Name" />
+                android:text="@string/name" />
 
             <TextView
                 android:id="@+id/txt_Surname"
@@ -74,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:layout_marginStart="250dp"
-                android:text="Surname"
+                android:text="@string/surname"
                 android:textSize="18sp"
                 />
             <View
@@ -92,7 +91,7 @@
                 android:layout_marginStart="25dp"
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:text="TextView" />
+                android:text="@string/textview" />
 
             <TextView
                 android:id="@+id/surname"
@@ -102,7 +101,7 @@
                 android:layout_marginStart="250dp"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="TextView" />
+                android:text="@string/textview" />
 
             <TextView
                 android:id="@+id/txt_Phone_Number"
@@ -111,7 +110,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="135dp"
                 android:textSize="18sp"
-                android:text="Phone Number" />
+                android:text="@string/phone_number" />
 
             <View
                 android:layout_width="match_parent"
@@ -128,7 +127,7 @@
                 android:layout_marginTop="177dp"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="TextView" />
+                android:text="@string/textview" />
 
             <TextView
                 android:id="@+id/txt_email"
@@ -137,7 +136,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="245dp"
                 android:textSize="18sp"
-                android:text="Email" />
+                android:text="@string/email" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -154,7 +153,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
 
-                android:text="TextView" />
+                android:text="@string/textview" />
 
             <TextView
                 android:id="@+id/txt_Birthdate"
@@ -163,7 +162,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="355dp"
                 android:textSize="18sp"
-                android:text="Date of Birth" />
+                android:text="@string/date_of_birth" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -179,7 +178,7 @@
                 android:layout_marginTop="397dp"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:text="TextView" />
+                android:text="@string/textview" />
 
 
         </RelativeLayout>
