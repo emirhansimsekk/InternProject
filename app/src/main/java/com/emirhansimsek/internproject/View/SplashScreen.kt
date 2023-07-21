@@ -16,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
         val walkingAnimation = findViewById<LottieAnimationView>(R.id.lt_Animation)
         walkingAnimation.visibility = View.VISIBLE
 
-        walkingAnimation.repeatCount = 1
+        walkingAnimation.repeatCount = 0
         /*val timer = Handler()
        timer.postDelayed({
            walkingAnimation.visibility = View.GONE
