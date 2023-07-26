@@ -34,9 +34,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         this.setTitle("Celebrities")
         var tabs = arrayOf("Man","Woman")
-        var pager = binding.viewPager
-        var tabLayout = binding.tabLayout
+        var pager = findViewById<ViewPager2>(R.id.view_Pager)
+        var tabLayout = findViewById<TabLayout>(R.id.tab_Layout)
         pager.adapter = PageAdapter(supportFragmentManager, lifecycle)
+        pager.setCurrentItem(1)
 
         TabLayoutMediator(tabLayout,pager){
             tab,position ->
