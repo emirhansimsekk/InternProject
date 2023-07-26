@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/splashScreen">
+
+    <activity
+        android:id="@+id/splashScreen"
+        android:name="com.emirhansimsek.internproject.View.SplashScreen"
+        android:label="activity_splash_screen"
+        tools:layout="@layout/activity_splash_screen" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.emirhansimsek.internproject.View.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/manFragment"
+        android:name="com.emirhansimsek.internproject.View.ManFragment"
+        android:label="fragment_man"
+        tools:layout="@layout/fragment_man" />
+    <fragment
+        android:id="@+id/womanFragment"
+        android:name="com.emirhansimsek.internproject.View.WomanFragment"
+        android:label="fragment_woman"
+        tools:layout="@layout/fragment_woman" />
+    <activity
+        android:id="@+id/loadingScreen"
+        android:name="com.emirhansimsek.internproject.View.LoadingScreen"
+        android:label="activity_loading_screen"
+        tools:layout="@layout/activity_loading_screen" />
+    <activity
+        android:id="@+id/profileActivity"
+        android:name="com.emirhansimsek.internproject.View.profileActivity"
+        android:label="profileActivity" />
+</navigation>

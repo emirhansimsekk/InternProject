@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.emirhansimsek.internproject.Controller.CelebrityAPIService
+import com.emirhansimsek.internproject.Controller.CustomAdapterWoman
 import com.emirhansimsek.internproject.Controller.customAdapterCelebrities
 import com.emirhansimsek.internproject.Model.Celebrity
 import com.emirhansimsek.internproject.R
+import com.emirhansimsek.internproject.databinding.FragmentManBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,8 +23,10 @@ import retrofit2.Response
  * Use the [ManFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ManFragment : Fragment() {
+class ManFragment : Fragment(R.layout.fragment_man) {
 
+    private var fragmentManBinding: FragmentManBinding? = null
+    private val binding get() = fragmentManBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +39,15 @@ class ManFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_man, container, false)
+        getData()
+        fragmentManBinding = FragmentManBinding.inflate(inflater,container,false)
 
-
-        return view
+        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+
+    fun getData(){
         var Celebrities = ArrayList<Celebrity.User.Actors> ()
 
         var celebrity: Celebrity.User.Actors
@@ -58,11 +64,11 @@ class ManFragment : Fragment() {
 
                 var a = 0
 
-                val user = responseBody.user_type.man
-                println(user[0].name_surname)
+                val manList = responseBody.user_type.man
+                // println(user[0].name_surname)
 
                 //println(responseBody.user_type[0].man[0].name_surname)
-                for(clb in user){
+                /*for(clb in manList){
                     //println(responseBody.user_type[0].man[0].name_surname)
                     if(clb!=null){
                         //println(responseBody.user_type[0].man[0].name_surname)
@@ -73,18 +79,8 @@ class ManFragment : Fragment() {
                         println(Celebrities.size)
                         a++
                     }
-                }
-                val layoutManager = LinearLayoutManager(context)
-                var recyclerView = view.findViewById<RecyclerView>(R.id.fragment_RecyclerView)
-
-
-                    recyclerView.layoutManager = layoutManager
-
-
-                val adapter = customAdapterCelebrities(Celebrities)
-
-
-                    recyclerView.adapter = adapter
+                }*/
+                recylerView(manList)
 
 
                 //recyclerView(Celebrities)
@@ -98,11 +94,22 @@ class ManFragment : Fragment() {
 
         }
         )
-
     }
 
 
+    fun recylerView(manList:List<Celebrity.User.Actors>){
+        val layoutManager = LinearLayoutManager(context)
+        var recyclerView = binding.fragmentRecyclerView
 
+        recyclerView.layoutManager = layoutManager
+
+
+        val adapter = customAdapterCelebrities(manList)
+
+
+        recyclerView.adapter = adapter
+
+    }
 
 
 

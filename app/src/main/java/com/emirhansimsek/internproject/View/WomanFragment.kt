@@ -12,6 +12,7 @@ import com.emirhansimsek.internproject.Controller.CustomAdapterWoman
 import com.emirhansimsek.internproject.Controller.customAdapterCelebrities
 import com.emirhansimsek.internproject.Model.Celebrity
 import com.emirhansimsek.internproject.R
+import com.emirhansimsek.internproject.databinding.FragmentManBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,10 +25,12 @@ import retrofit2.Response
  */
 class WomanFragment : Fragment() {
 
+    private var fragmentManBinding: FragmentManBinding? = null
+    private val binding get() = fragmentManBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        getData()
     }
 
     override fun onCreateView(
@@ -36,11 +39,15 @@ class WomanFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_woman, container, false)
-        return view
+        getData()
+        fragmentManBinding = FragmentManBinding.inflate(inflater,container,false)
+
+        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+
+    fun getData(){
         var Actresses = ArrayList<Celebrity.User.Actresses> ()
 
         var celebrity: Celebrity.User.Actresses
@@ -57,11 +64,11 @@ class WomanFragment : Fragment() {
 
                 var a = 0
 
-                val user = responseBody.user_type.woman
-                println(user[0].name_surname)
+                val womanList = responseBody.user_type.woman
+                //println(user[0].name_surname)
 
                 //println(responseBody.user_type[0].man[0].name_surname)
-                for(clb in user){
+                for(clb in womanList){
                     //println(responseBody.user_type[0].man[0].name_surname)
                     if(clb!=null){
                         //println(responseBody.user_type[0].man[0].name_surname)
@@ -73,20 +80,7 @@ class WomanFragment : Fragment() {
                         a++
                     }
                 }
-                val layoutManager = LinearLayoutManager(context)
-                var recyclerView = view.findViewById<RecyclerView>(R.id.fragment_RecyclerView)
-
-
-                recyclerView.layoutManager = layoutManager
-
-
-                val adapter = CustomAdapterWoman(Actresses)
-
-
-                recyclerView.adapter = adapter
-
-
-                //recyclerView(Celebrities)
+                recyclerView(Actresses)
 
             }
 
@@ -97,5 +91,19 @@ class WomanFragment : Fragment() {
 
         }
         )
+    }
+
+    fun recyclerView(womanList:List<Celebrity.User.Actresses>){
+        val layoutManager = LinearLayoutManager(context)
+        var recyclerView = binding.fragmentRecyclerView
+
+
+        recyclerView.layoutManager = layoutManager
+
+
+        val adapter = CustomAdapterWoman(womanList)
+
+
+        recyclerView.adapter = adapter
     }
 }
