@@ -18,6 +18,9 @@ class LoadingScreen : AppCompatActivity() {
         val phone_number = intent.getStringExtra("phone_number")
         val email = intent.getStringExtra("email")
         val birthdate = intent.getStringExtra("birthdate")
+        val gender = intent.getStringExtra("gender")
+        val image = intent.getStringExtra("image")
+        val position = intent.getStringExtra("position")
 
 
         val loadingAnimation = findViewById<LottieAnimationView>(R.id.lt_loadingAnimation)
@@ -36,6 +39,9 @@ class LoadingScreen : AppCompatActivity() {
                 intent.putExtra("phone_number",phone_number)
                 intent.putExtra("email",email)
                 intent.putExtra("birthdate",birthdate)
+                intent.putExtra("gender",gender)
+                intent.putExtra("image",image)
+                intent.putExtra("positin",position)
                 startActivity(intent)
 
             }

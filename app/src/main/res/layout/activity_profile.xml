@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="#F6F7FA">
+
 
             <TextView
                 android:id="@+id/num_txt"
@@ -48,6 +48,20 @@
                 android:text="@string/textview"
                 android:textAlignment="center"
                 android:textSize="20sp" />
+
+            <ToggleButton
+                android:id="@+id/btn_like"
+                android:layout_width="51dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/check"
+                android:textOn=" "
+                android:textOff=" ">
+
+            </ToggleButton>
+
+
 
 
         </RelativeLayout>
@@ -184,4 +198,4 @@
         </RelativeLayout>
 
 </RelativeLayout>
-    </ScrollView>
+</ScrollView>

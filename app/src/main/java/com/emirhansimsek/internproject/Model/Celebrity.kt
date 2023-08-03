@@ -1,5 +1,8 @@
 package com.emirhansimsek.internproject.Model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Celebrity(
@@ -8,43 +11,47 @@ data class Celebrity(
 
 ) {
     data class User(
-        @SerializedName("man")
-        val man: List<Actors>,
-        @SerializedName("woman")
-        val woman: List<Actresses>
+        @SerializedName("celebrities")
+        val celebrities: List<Celebrities>
+
 
     ) {
-        data class Actors(
+        @Entity(tableName = "Celebrities")
+        data class Celebrities(
+            @ColumnInfo(name = "name_surname")
             @SerializedName("name_surname")
             var name_surname: String?,
+            @ColumnInfo(name = "age")
             @SerializedName("age")
             var age: String?,
+            @ColumnInfo(name = "gender")
+            @SerializedName("gender")
+            var gender: String?,
+            @ColumnInfo(name = "phone_number")
             @SerializedName("phone_number")
             var phone_number: String?,
+            @ColumnInfo(name = "email")
             @SerializedName("email")
             var email: String?,
+            @ColumnInfo(name = "birthdate")
             @SerializedName("birthdate")
             var birthdate: String?,
+            @ColumnInfo(name = "resim")
             @SerializedName("image")
-            var image: String?,
+            var resim: String?
 
 
-        )
 
-        data class Actresses(
-            @SerializedName("name_surname")
-            var name_surname: String?,
-            @SerializedName("age")
-            var age: String?,
-            @SerializedName("phone_number")
-            var phone_number: String?,
-            @SerializedName("email")
-            var email: String?,
-            @SerializedName("birthdate")
-            var birthdate: String?,
-            @SerializedName("image")
-            var image: String?
-        )
+        ){
+            @PrimaryKey(autoGenerate = true)
+            @ColumnInfo(name = "celebrityIDdb")
+            var celebrityID: Int = 0
+
+        }
+
+
+
+
     }
 
 
