@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.emirhansimsek.internproject.Model.Celebrity
 import com.emirhansimsek.internproject.R
 import com.emirhansimsek.internproject.View.LoadingScreen
+import com.emirhansimsek.internproject.View.ProfileDialog
 import com.emirhansimsek.internproject.View.profileActivity
 import com.emirhansimsek.internproject.databinding.CelebritiesRowBinding
 import com.squareup.picasso.Picasso
 
+
 class CustomAdapterWoman(val actreses: List<Celebrity.User.Celebrities>): RecyclerView.Adapter<CustomAdapterWoman.womanHolder>() {
     private lateinit var binding : CelebritiesRowBinding
     private lateinit var mListener : onItemClickListener
+    private lateinit var context : Context
     interface onItemClickListener{
         fun onItemClick(position: Int)
     }
@@ -38,6 +41,7 @@ class CustomAdapterWoman(val actreses: List<Celebrity.User.Celebrities>): Recycl
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): womanHolder {
         binding = CelebritiesRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        context = parent.context
         return womanHolder(binding, mListener)
     }
 
@@ -46,12 +50,19 @@ class CustomAdapterWoman(val actreses: List<Celebrity.User.Celebrities>): Recycl
     }
 
     override fun onBindViewHolder(holder: womanHolder, position: Int) {
-
-
         val actress = actreses[position]
         holder.binding.txtName.text = actress.name_surname
         holder.binding.txtBirthdate.text = actress.birthdate
-
+        holder.binding.cardView.setOnLongClickListener {
+            showProfileDialog(actress)
+            return@setOnLongClickListener true
+        }
         Picasso.get().load(actress.resim).into(holder.itemView.findViewById<ImageView>(R.id.imageView))
+    }
+
+    fun showProfileDialog(woman: Celebrity.User.Celebrities){
+        val profileDialog = ProfileDialog(woman)
+        val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+        profileDialog.show(fragmentManager,"DialogProfile")
     }
 }

@@ -43,7 +43,8 @@ class ProfileDialog(var celebrity: Celebrity.User.Celebrities) : DialogFragment(
         profileDialogBinding = FragmentProfileDialogBinding.inflate(inflater,container,false)
         profileDialogBinding!!.name.text = celebrity.name_surname
         profileDialogBinding!!.fullName.text = celebrity.name_surname
-        profileDialogBinding!!.phoneNumber.text = PhoneNumberUtils.formatNumber(celebrity.phone_number)
+        profileDialogBinding!!.phoneNumber.text = celebrity.phone_number?.let { formatNumber(it) }
+        //profileDialogBinding!!.phoneNumber.text = PhoneNumberUtils.formatNumber(celebrity.phone_number)
         profileDialogBinding!!.email.text = celebrity.email
         profileDialogBinding!!.birthdate.text = celebrity.birthdate
         profileDialogBinding!!.age.text = "${celebrity.age} years old"
@@ -53,13 +54,24 @@ class ProfileDialog(var celebrity: Celebrity.User.Celebrities) : DialogFragment(
             surname=parts[1]
         }
         var firstLetter = name.get(0)
-        profileDialogBinding!!.numTxt.text = firstLetter.toString()
+        profileDialogBinding!!.txtNum.text = firstLetter.toString()
         isCancelable = false
         profileDialogBinding!!.btnClose.setOnClickListener {
 
             dismiss()
         }
         return binding.root
+    }
+
+    fun formatNumber(phone_number: String): String{
+        val formattedNumber:String
+        val countryCode = phone_number.substring(0,3)
+        val provinceCode = phone_number.substring(4,7)
+        val number = phone_number.substring(7)
+        formattedNumber = "(${countryCode}) ${provinceCode} ${number}"
+
+
+        return formattedNumber
     }
 
 

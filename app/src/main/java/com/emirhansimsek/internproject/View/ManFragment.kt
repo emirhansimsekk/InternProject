@@ -41,6 +41,7 @@ class ManFragment : Fragment(R.layout.fragment_man) {
     private val viewModel: ItemViewModel by activityViewModels()
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,8 +53,17 @@ class ManFragment : Fragment(R.layout.fragment_man) {
     ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_man, container, false)
+        var manList = ArrayList<Celebrity.User.Celebrities>()
+        val bundle = arguments
+
+        println("ife girdi")
+        /*manList = bundle?.getParcelableArrayList<Celebrity.User.Celebrities>("Actors") as ArrayList<Celebrity.User.Celebrities>
+        println(manList[0].name_surname)
+        println(manList.size)
+        recylerView(manList)*/
 
         fragmentManBinding = FragmentManBinding.inflate(inflater,container,false)
+        //recylerView(manList)
 
         viewModel.selectedItemMan.observe(viewLifecycleOwner,{
             recylerView(it)
@@ -72,14 +82,14 @@ class ManFragment : Fragment(R.layout.fragment_man) {
 
 
 
-    fun recylerView(manList:List<Celebrity.User.Celebrities>){
+    private fun recylerView(manList:List<Celebrity.User.Celebrities>){
 
             val layoutManager = LinearLayoutManager(context)
             var recyclerView = binding.fragmentRecyclerView
 
             recyclerView.layoutManager = layoutManager
             val loadingAnimation = binding.ltLoadingAnimation
-            val adapter = customAdapterCelebrities(manList,requireContext())
+            val adapter = customAdapterCelebrities(manList)
             recyclerView.adapter = adapter
             adapter.setOnItemClickListener(object :customAdapterCelebrities.onItemClikListener{
                 override fun onItemClick(position: Int) {

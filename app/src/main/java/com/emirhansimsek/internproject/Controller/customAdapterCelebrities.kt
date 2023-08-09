@@ -23,11 +23,12 @@ import com.squareup.picasso.Picasso
 
 
 
-class customAdapterCelebrities(val celebrities: List<Celebrity.User.Celebrities>, var context: Context) : RecyclerView.Adapter<customAdapterCelebrities.celebritiesHolder>() {
+class customAdapterCelebrities(val celebrities: List<Celebrity.User.Celebrities>) : RecyclerView.Adapter<customAdapterCelebrities.celebritiesHolder>() {
 
     private lateinit var binding : CelebritiesRowBinding
     private lateinit var mListener : onItemClikListener
-    private lateinit var bindingDialog: ProfileDialog
+    lateinit var context: Context
+
 
     interface onItemClikListener{
         fun onItemClick(position : Int)

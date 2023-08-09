@@ -6,12 +6,19 @@ plugins {
 
 }
 
+apply plugin: 'kotlin-android-extensions'
+
+
 android {
     namespace 'com.emirhansimsek.internproject'
     compileSdk 33
 
     viewBinding {
         enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
     }
 
     defaultConfig {

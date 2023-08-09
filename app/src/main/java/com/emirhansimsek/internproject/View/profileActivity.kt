@@ -57,7 +57,7 @@ class profileActivity : AppCompatActivity() {
 
         binding.name.text= name
         binding.surname.text= surname
-        binding.phoneNumber.text = PhoneNumberUtils.formatNumber(phone_number)
+        binding.phoneNumber.text = phone_number?.let { formatNumber(it) }
         binding.email.text = email
         binding.birthdate.text = birthdate
 
@@ -124,9 +124,15 @@ class profileActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun saveData(celebrity:Celebrity){
+    fun formatNumber(phone_number: String): String{
+        val formattedNumber:String
+        val countryCode = phone_number.substring(0,3)
+        val provinceCode = phone_number.substring(4,7)
+        val number = phone_number.substring(7)
+        formattedNumber = "(${countryCode}) ${provinceCode} ${number}"
 
 
+        return formattedNumber
     }
 
 }

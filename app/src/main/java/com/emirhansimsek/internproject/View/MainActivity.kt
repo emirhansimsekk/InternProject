@@ -3,6 +3,7 @@ package com.emirhansimsek.internproject.View
 import android.animation.Animator
 import android.animation.Animator.AnimatorListener
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -14,10 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.airbnb.lottie.LottieAnimationView
-import com.emirhansimsek.internproject.Controller.CelebrityAPIService
-import com.emirhansimsek.internproject.Controller.ItemViewModel
-import com.emirhansimsek.internproject.Controller.PageAdapter
-import com.emirhansimsek.internproject.Controller.customAdapterCelebrities
+import com.emirhansimsek.internproject.Controller.*
 import com.emirhansimsek.internproject.Model.Celebrity
 import com.emirhansimsek.internproject.R
 import com.emirhansimsek.internproject.databinding.ActivityMainBinding
@@ -38,10 +36,12 @@ class MainActivity : AppCompatActivity() {
         //val Celebrities = ArrayList<Celebrity.Actors>()
         setContentView(R.layout.activity_main)
         this.setTitle("Celebrities")
+        val loadingAnimation = binding.ltLoadingAnimation
         var tabs = arrayOf("Man","Woman")
         var pager = findViewById<ViewPager2>(R.id.view_Pager)
         var tabLayout = findViewById<TabLayout>(R.id.tab_Layout)
         pager.adapter = PageAdapter(supportFragmentManager, lifecycle)
+
         //pager.setCurrentItem(1)
         getData()
         TabLayoutMediator(tabLayout,pager){
@@ -50,13 +50,13 @@ class MainActivity : AppCompatActivity() {
         }.attach()
 
 
-
-
         }
 
     fun getData(){
 
-        var bundle: Bundle
+        val fragment = ManFragment()
+        var bundle = Bundle()
+        var celebritiesArray = ArrayList<ArrayList<Celebrity.User.Celebrities>>()
         var Actors = ArrayList<Celebrity.User.Celebrities>()
         var Actresses = ArrayList<Celebrity.User.Celebrities>()
         var celebrity: Celebrity.User.Celebrities
@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                         if(celebrity.gender=="man"){
                             Actors.add(celebrity)
 
+
                         }
                         else{
                             Actresses.add(celebrity)
@@ -78,11 +79,11 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
-
+               /* bundle.putParcelableArrayList("Actors",Actors)
+                fragment.arguments = bundle
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,fragment).commit()*/
                 viewModel.selectItemMan(Actors)
                 viewModel.selectItemWoman(Actresses)
-
-
             }
 
             override fun onFailure(call: Call<Celebrity>, t: Throwable) {
@@ -90,14 +91,12 @@ class MainActivity : AppCompatActivity() {
                 println(t.printStackTrace())
 
             }
-
-
-
-
         })
 
 
+
     }
+
 
 
 
