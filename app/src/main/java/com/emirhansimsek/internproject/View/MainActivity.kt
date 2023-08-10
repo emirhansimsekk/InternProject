@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Parcelable
 import android.text.format.Time
 import android.view.View
 import androidx.activity.viewModels
@@ -36,13 +37,11 @@ class MainActivity : AppCompatActivity() {
         //val Celebrities = ArrayList<Celebrity.Actors>()
         setContentView(R.layout.activity_main)
         this.setTitle("Celebrities")
-        val loadingAnimation = binding.ltLoadingAnimation
+
         var tabs = arrayOf("Man","Woman")
         var pager = findViewById<ViewPager2>(R.id.view_Pager)
         var tabLayout = findViewById<TabLayout>(R.id.tab_Layout)
         pager.adapter = PageAdapter(supportFragmentManager, lifecycle)
-
-        //pager.setCurrentItem(1)
         getData()
         TabLayoutMediator(tabLayout,pager){
             tab,position ->
@@ -79,9 +78,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
-               /* bundle.putParcelableArrayList("Actors",Actors)
-                fragment.arguments = bundle
-                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,fragment).commit()*/
+
                 viewModel.selectItemMan(Actors)
                 viewModel.selectItemWoman(Actresses)
             }
@@ -92,6 +89,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+
 
 
 

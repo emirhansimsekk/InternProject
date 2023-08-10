@@ -10,19 +10,19 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 
-
+@Parcelize
 data class Celebrity(
     @SerializedName("user_type")
     val user_type: User
 
-){
-
+):Parcelable{
+    @Parcelize
     data class User(
         @SerializedName("celebrities")
         val celebrities: List<Celebrities>
 
 
-    ) {
+    ):Parcelable {
 
         @Parcelize
         @Entity(tableName = "Celebrities")

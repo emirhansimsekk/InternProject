@@ -27,21 +27,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tab_Layout"
         />
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lt_loadingAnimation"
-        android:duration="100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:lottie_rawRes="@raw/loadinganimation"
-        app:lottie_loop="false"
 
-        >
-
-    </com.airbnb.lottie.LottieAnimationView>
 
 
 </RelativeLayout>

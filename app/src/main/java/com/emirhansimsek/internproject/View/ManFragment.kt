@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,23 +49,15 @@ class ManFragment : Fragment(R.layout.fragment_man) {
 
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_man, container, false)
-        var manList = ArrayList<Celebrity.User.Celebrities>()
-        val bundle = arguments
-
-        println("ife girdi")
-        /*manList = bundle?.getParcelableArrayList<Celebrity.User.Celebrities>("Actors") as ArrayList<Celebrity.User.Celebrities>
-        println(manList[0].name_surname)
-        println(manList.size)
-        recylerView(manList)*/
 
         fragmentManBinding = FragmentManBinding.inflate(inflater,container,false)
-        //recylerView(manList)
 
         viewModel.selectedItemMan.observe(viewLifecycleOwner,{
             recylerView(it)
@@ -114,12 +108,6 @@ class ManFragment : Fragment(R.layout.fragment_man) {
 
 
     }
-
-
-
-
-
-
 
 
 

@@ -71,13 +71,6 @@ class profileActivity : AppCompatActivity() {
         val celebrityDatabase = Room.databaseBuilder(this,CelebrityDatabase::class.java,"celebritydb").
             allowMainThreadQueries().build()
 
-
-        /*sharedPreferences = getSharedPreferences(SPREFS+position, MODE_PRIVATE)
-        editor = getSharedPreferences(SPREFS+position, MODE_PRIVATE).edit()
-
-        btn_state = sharedPreferences.getBoolean(BTN_STATE,false)
-        binding.btnLike.isChecked = btn_state*/
-
         val celebrityCounter = celebrityDatabase.celebrityDao().getCelebrity(name+ " "+ surname)
         if(celebrityCounter != 0){
             binding.btnLike.isChecked = true
